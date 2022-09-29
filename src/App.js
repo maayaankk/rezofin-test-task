@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import Login from './components/Login';
+import Widget from './components/Widget';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
           ):(
             <p>React app</p>
           )}
+          <Widget />
       </header>
     </div>
   );

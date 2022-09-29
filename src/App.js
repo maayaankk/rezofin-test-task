@@ -1,22 +1,20 @@
 import { useState } from 'react';
 import './App.css';
-import Login from './components/Login';
+import SignUp from './components/SignUp';
 import Widget from './components/Widget';
+import AppBar from './components/AppBar'
 
 function App() {
 
-  const [user, setUser] = useState(false);
 
   return (
     <div className="App">
-      <header className="App-header">
-          {!user ? (
-            <Login />
-          ):(
-            <p>React app</p>
-          )}
-          <Widget />
-      </header>
+          
+            <SignUp />
+          
+            
+              {/* <AppBar />
+              <Widget /> */}
     </div>
   );
 }

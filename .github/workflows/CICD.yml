@@ -8,13 +8,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v3
+  # build:
+  #   runs-on: self-hosted
+  #   steps:
+  #     - uses: actions/checkout@v3
 
-      - name: Compile
-        run: echo "Compileing the code!"
+  #     - name: Compile
+  #       run: echo "Compileing the code!"
   
   DeployDev:
     name: Deploy to Development

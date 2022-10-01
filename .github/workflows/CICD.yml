@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: [ubantu-latest]
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
 
@@ -20,7 +20,7 @@ jobs:
     name: Deploy to Development
     if: github.event_name == 'pull_request'
     needs: [build]
-    runs-on: [ubantu-latest]
+    runs-on: self-hosted
     environment: 
       name: Development
       url: "http://dev.myapp.com"
@@ -32,7 +32,7 @@ jobs:
     name: Deploy to UAT
     if: github.event.ref == 'refs/heads/master'
     needs: [build]
-    runs-on: [ubantu-latest]
+    runs-on: self-hosted
     environment: 
       name: UAT
       url: "http://test.myapp.com"
@@ -43,7 +43,7 @@ jobs:
   DeployProd:
     name: Deploy to Production
     needs: [DeployUat]
-    runs-on: [ubantu-latest]
+    runs-on: self-hosted
     environment: 
       name: Production
       url: "http://myapp.com"

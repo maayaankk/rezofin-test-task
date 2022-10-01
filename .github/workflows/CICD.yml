@@ -5,7 +5,7 @@ on:
     branches:  [ signup ]
   pull_request:
     branches:  [ signup ]
-  workflows_dispatch:
+  workflow_dispatch:
 
 jobs:
   Build:

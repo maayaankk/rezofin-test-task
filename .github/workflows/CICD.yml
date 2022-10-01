@@ -1,0 +1,53 @@
+name: CI + CD
+
+on:
+  push:
+    branches: [master] [add-widget] [signup]
+  pull_request:
+    branches: [master] [add-widget] [signup]
+  workflows_dispatch:
+
+jobs:
+  Build:
+    runs-on: ubantu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Compile
+        run: echo Compileing the code!
+  
+  DeployDev:
+    name: Deploy to Development
+    if: github.event_name == "pull_request"
+    needs: [Build]
+    runs-on: ubantu-latest
+    environment: 
+      name: Development
+      url: "http://dev.myapp.com"
+    steps:
+      - name: Deploy
+        run: echo I am deploying!
+
+  DeployUat:
+    name: Deploy to UAT
+    if: github.event.ref == "refs/heads/master"
+    needs: [Build]
+    runs-on: ubantu-latest
+    environment: 
+      name: UAT
+      url: "http://test.myapp.com"
+    steps:
+      - name: Deploy
+        run: echo I am deploying!
+
+  DeployProd:
+    name: Deploy to Production
+    needs: [DeployUat]
+    runs-on: ubantu-latest
+    environment: 
+      name: Production
+      url: "http://myapp.com"
+    steps: 
+      - name: Deploy
+        run: echo I am deploying!
+  

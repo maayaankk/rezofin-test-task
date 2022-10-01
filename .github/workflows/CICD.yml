@@ -18,6 +18,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Compile
         run: echo "Building code!"
+  # deployDev:
+  #   name: Deploy to Development
+  #   runs-on: ubantu-latest
+
+
   
 # name: CI + CD
 
@@ -43,7 +48,7 @@ jobs:
     needs: [build]
     runs-on: ubantu-latest
     environment: 
-      name: Development
+      name: DEV
       url: "http://dev.myapp.com"
     steps:
       - name: Deploy
@@ -66,7 +71,7 @@ jobs:
     needs: [DeployUat]
     runs-on: ubantu-latest
     environment: 
-      name: Production
+      name: PROD
       url: "http://myapp.com"
     steps: 
       - name: Deploy

@@ -22,7 +22,7 @@ jobs:
     name: Deploy to Development
     runs-on: ubantu-latest
     if: github.event_name == 'pull_request'
-    need: [build]
+    needs: [build]
     environment:
       name: DEV
       url: "http://dev.myapp.com"

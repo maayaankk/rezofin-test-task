@@ -8,10 +8,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  Build:
+  build:
     runs-on: ubantu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Compile
         run: echo Compileing the code!
@@ -19,7 +19,7 @@ jobs:
   DeployDev:
     name: Deploy to Development
     if: github.event_name == 'pull_request'
-    needs: [Build]
+    needs: [build]
     runs-on: ubantu-latest
     environment: 
       name: Development
@@ -31,7 +31,7 @@ jobs:
   DeployUat:
     name: Deploy to UAT
     if: github.event.ref == 'refs/heads/master'
-    needs: [Build]
+    needs: [build]
     runs-on: ubantu-latest
     environment: 
       name: UAT

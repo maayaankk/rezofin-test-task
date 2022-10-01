@@ -2,25 +2,46 @@ name: CI + CD
 
 on:
   push:
-    branches:  [ master ]
+    branches:
+      - master
   pull_request:
-    branches:  [ master ]
-  workflow_dispatch:
+    branches:
+      - master
 
 jobs:
-  # build:
-  #   runs-on: self-hosted
-  #   steps:
-  #     - uses: actions/checkout@v3
+  build:
+    runs-on: ubuntu-latest
+    # environment: 
+    #   name: production
+    #   url: https://github.com
+    steps:
+      - uses: actions/checkout@v2
+      - name: Compile
+        run: echo "Building code!"
+  
+# name: CI + CD
 
-  #     - name: Compile
-  #       run: echo "Compileing the code!"
+# on:
+#   push:
+#     branches:  [ master ]
+#   pull_request:
+#     branches:  [ master ]
+#   workflow_dispatch:
+
+# jobs:
+#   build:
+#     runs-on: ubantu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+
+#       - name: Compile
+#         run: echo "Compileing the code!"
   
   DeployDev:
     name: Deploy to Development
     if: github.event_name == 'pull_request'
     needs: [build]
-    runs-on: self-hosted
+    runs-on: ubantu-latest
     environment: 
       name: Development
       url: "http://dev.myapp.com"
@@ -32,7 +53,7 @@ jobs:
     name: Deploy to UAT
     if: github.event.ref == 'refs/heads/master'
     needs: [build]
-    runs-on: self-hosted
+    runs-on: ubantu-latest
     environment: 
       name: UAT
       url: "http://test.myapp.com"
@@ -43,7 +64,7 @@ jobs:
   DeployProd:
     name: Deploy to Production
     needs: [DeployUat]
-    runs-on: self-hosted
+    runs-on: ubantu-latest
     environment: 
       name: Production
       url: "http://myapp.com"

@@ -2,9 +2,9 @@ name: CI + CD
 
 on:
   push:
-    branches:  [ master ]
+    branches:  [ add-widget ]
   pull_request:
-    branches:  [ master ]
+    branches:  [ add-widget ]
   workflow_dispatch:
 
 jobs:

@@ -8,9 +8,9 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    with:
+      stage: dev
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
@@ -23,5 +23,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    # - run: npm run build --if-present
+    # - run: npm test

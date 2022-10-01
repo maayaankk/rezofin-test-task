@@ -6,13 +6,17 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 // import IconButton from '@mui/material/IconButton';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+<<<<<<< HEAD
 // import Login from './SignUp';
+=======
+import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
+
+>>>>>>> f31a3fde9576f1bc37fbdff96dae4fb70f87736f
 // import MenuIcon from '@mui/icons-material/Menu';
 // import { MenuIcon } from "@material-ui/icons/Menu"
 // import MenuIcon from '@mui/icons-material/Menu';
 
-export default function ButtonAppBar() {
-
+function ButtonAppBar() {
     const darkTheme = createTheme({
         palette: {
           mode: 'dark',
@@ -41,10 +45,19 @@ export default function ButtonAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Rezofin
           </Typography>
-          <Button color="inherit">Login</Button>
+          {/* <Authenticator>
+            {({ signOut, user }) => (
+             <main>
+                <Button color="inherit" onClick={signOut}>Sign out</Button>
+             </main>
+            )}
+        </Authenticator> */}
+        <AmplifySignOut />
         </Toolbar>
         </AppBar>
         </Box>
         </ThemeProvider>
   );
 }
+
+export default ButtonAppBar;

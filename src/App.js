@@ -12,7 +12,7 @@ import { Authenticator, withAuthenticator } from '@aws-amplify/ui-react';
 function App() {
   return (
     <div className="App">
-              <SignUp />
+              {/* <SignUp /> */}
               <AppBar />
               <Widget />
     </div>

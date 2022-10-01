@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
+// import IconButton from '@mui/material/IconButton';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
 
@@ -29,7 +29,7 @@ function ButtonAppBar() {
         }}>
         <AppBar position="static">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             size="large"
             edge="start"
             color="primary"
@@ -37,7 +37,7 @@ function ButtonAppBar() {
             sx={{ mr: 2 }}
           >
             {/* <MenuIcon /> */}
-          </IconButton>
+          {/* </IconButton> */} 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Rezofin
           </Typography>

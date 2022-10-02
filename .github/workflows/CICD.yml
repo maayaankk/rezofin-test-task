@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
       - name: Compile
@@ -18,7 +18,7 @@ jobs:
 
   deployDev:
     name: Deploy to Development
-    runs-on: ubantu-latest
+    runs-on: ubuntu-18.04
     # if: github.event_name == 'pull_request'
     needs: [build]
     environment:
@@ -32,7 +32,7 @@ jobs:
     name: Deploy to UAT
     # if: github.event.ref == 'refs/heads/main'
     needs: [build]
-    runs-on: ubantu-latest
+    runs-on: ubuntu-18.04
     environment: 
       name: UAT
       url: "http://test.myapp.com"
@@ -43,7 +43,7 @@ jobs:
   deployProd:
     name: Deploy to Production
     needs: [deployUat]
-    runs-on: ubantu-latest
+    runs-on: ubuntu-18.04
     environment: 
       name: PROD
       url: "http://myapp.com"

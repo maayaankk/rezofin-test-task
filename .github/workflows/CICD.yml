@@ -19,7 +19,7 @@ jobs:
   deployDev:
     name: Deploy to Development
     runs-on: ubuntu-18.04
-    # if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request'
     needs: [build]
     environment:
       name: DEV
@@ -30,7 +30,7 @@ jobs:
 
   deployUat:
     name: Deploy to UAT
-    # if: github.event.ref == 'refs/heads/main'
+    if: github.event.ref == 'refs/heads/main'
     needs: [build]
     runs-on: ubuntu-18.04
     environment: 

@@ -11,9 +11,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # environment: 
-    #   name: production
-    #   url: https://github.com
     steps:
       - uses: actions/checkout@v2
       - name: Compile
@@ -30,21 +27,21 @@ jobs:
       - name: Deploy DEV
         run: echo "Deploying DEV"
 
-  # deployUat:
-  #   name: Deploy to UAT
-  #   if: github.event.ref == 'refs/heads/master'
-  #   needs: [build]
-  #   runs-on: ubantu-latest
-  #   environment: 
-  #     name: UAT
-  #     url: "http://test.myapp.com"
-  #   steps:
-  #     - name: Deploy
-  #       run: echo "I am deploying!"
+  deployUat:
+    name: Deploy to UAT
+    if: github.event.ref == 'refs/heads/master'
+    needs: [build]
+    runs-on: ubantu-latest
+    environment: 
+      name: UAT
+      url: "http://test.myapp.com"
+    steps:
+      - name: Deploy
+        run: echo "I am deploying!"
 
   deployProd:
     name: Deploy to Production
-    # needs: [deployUat]
+    needs: [deployUat]
     runs-on: ubantu-latest
     environment: 
       name: PROD

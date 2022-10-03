@@ -1,4 +1,4 @@
-name: Serverless backend CICD
+name: Serverless backend cicd
 
 on:
   push:

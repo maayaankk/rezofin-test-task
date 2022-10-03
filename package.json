@@ -15,7 +15,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
-    "web-vitals": "^2.1.4"
+    "serverless-webpack": "^5.10.0",
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.74.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,5 +42,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@aws-sdk/client-dynamodb": "^3.181.0",
+    "@aws-sdk/util-dynamodb": "^3.181.0",
+    "aws-crt": "^1.12.3",
+    "serverless-iam-roles-per-function": "^3.2.0",
+    "serverless-offline": "^11.0.1"
   }
 }

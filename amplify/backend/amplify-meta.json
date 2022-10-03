@@ -43,7 +43,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-app-dev-151702-deployment/amplify-cfn-templates/auth/app93ff0569-cloudformation-template.json",
         "logicalId": "authapp93ff0569"
       },
-      "lastPushTimeStamp": "2022-09-30T09:52:22.423Z",
+      "lastPushTimeStamp": "2022-10-03T07:34:59.076Z",
       "output": {
         "UserPoolId": "ap-south-1_RtDS8UR0C",
         "AppClientIDWeb": "1p970h1lgmcpetgu290r0qndd2",
@@ -53,7 +53,7 @@
         "IdentityPoolName": "app93ff0569_identitypool_93ff0569__dev",
         "UserPoolName": "app93ff0569_userpool_93ff0569"
       },
-      "lastPushDirHash": "sfmR3jbgPU7RAHUpJvspd7n+A1M="
+      "lastPushDirHash": "Tacu7xT8Q05R3p7xf4gBj9f/ZwE="
     }
   }
 }

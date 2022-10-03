@@ -1,0 +1,105 @@
+service: rezofin-backend-api
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: ap-south-1
+  stage: dev
+  environment: 
+    DYNAMO_USER_TABLE: ${self:custom.userTableName}
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+          - dynamodb:DescribeTable
+          - dynamodb:Query
+          - dynamodb:Scan
+          - dynamodb:GetItem
+          - dynamodb:PutItem
+          - dynamodb:UpdateItem
+          - dynamodb:DeleteItem
+          - dynamodb:BatchWriteItem
+      Resource: 
+        - arn:aws:dynamodb:ap-south-1:*:*
+        - arn:aws:lambda:ap-south-1:*:*
+
+plugins:
+  - serverless-iam-roles-per-function
+  - serverless-offline
+  - serverless-webpack
+
+package: 
+  individually: true
+
+custom:
+  userTableName: user-table-${self:provider.stage}
+
+functions:
+  getUser:
+    handler: lambdas/user.getUser
+    name: user-data
+    events:
+      - http:
+          path: /get-user
+          method: GET
+  createUser:
+    handler: lambdas/user.createUser
+    name: create-user-data
+    events:
+      - http:
+          path: /create-user-data
+          method: POST
+  getUserById:
+    handler: lambdas/user.getUserById
+    name: get-user-data-byId
+    events:
+      - http:
+          path: /get-user-data-byId
+          method: GET
+  updateUserById:
+    handler: lambdas/user.updateUserById
+    name: update-user-byId
+    events:
+      - http:
+          path: /update-user-data-byId
+          method: PUT
+  deleteUserById:
+    handler: lambdas/user.deleteUserById
+    name: delete-user-byId
+    events:
+      - http: 
+          path: /delete-user-data-byId
+          method: DELETE
+
+resource:
+  Resources:
+    UserTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.userTableName}
+        AttributeDefinitions:
+          - AttributeName: ID
+            AttributeType: S
+        KeySchema:
+          - AttributeName: ID
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+      
+    CognitoUserPool:
+      Type: AWS::Cognito::UserPool
+      Properties:
+        UserPoolName: app93ff0569_userpool_93ff0569-dev
+        UsernameAttributes:
+          - email
+        AutoVerifiedAttributes:
+          - email
+    CognitoUserPoolClient:
+      Type: AWS::Cognito::UserPoolClient
+      Properties:
+        ClientName: app93ff0569_app_clientWeb
+        UserPoolId: 
+          Ref: CognitoUserPool
+        ExplicitAuthFlows:
+          - ADMIN_NO_SRP_AUTH
+        GenerateSecret:

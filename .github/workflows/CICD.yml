@@ -32,7 +32,6 @@ jobs:
       - name: Deploy DEV
         run: echo "Deploying DEV"
       - run: npm ci
-      - run: npm test
 
   deployUat:
     name: Deploy to UAT
@@ -50,7 +49,6 @@ jobs:
       - name: Deploy
         run: echo "I am deploying!"
       - run: npm ci
-      - run: npm test
 
   deployProd:
     name: Deploy to Production
@@ -67,5 +65,4 @@ jobs:
       - name: Deploy
         run: echo "I am deploying!"
       - run: npm ci
-      - run: npm test
   

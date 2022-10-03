@@ -32,6 +32,12 @@ jobs:
       - name: Deploy DEV
         run: echo "Deploying DEV"
       - run: npm ci
+        uses: serverless/github-actions@v3.1
+        with:
+          args: deploy
+    env:
+      AWS_ACCESS_KEY: ${{secrets.AWS_ACCESS_KEY}}
+      AWS_SECRET_KEY: ${{secrets.AWS_SECRET_KEY}}
       # - run: npm test
 
   deployUat:

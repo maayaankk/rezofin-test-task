@@ -86,20 +86,20 @@ resource:
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
       
-    CognitoUserPool:
-      Type: AWS::Cognito::UserPool
-      Properties:
-        UserPoolName: app93ff0569_userpool_93ff0569-dev
-        UsernameAttributes:
-          - email
-        AutoVerifiedAttributes:
-          - email
-    CognitoUserPoolClient:
-      Type: AWS::Cognito::UserPoolClient
-      Properties:
-        ClientName: app93ff0569_app_clientWeb
-        UserPoolId: 
-          Ref: CognitoUserPool
-        ExplicitAuthFlows:
-          - ADMIN_NO_SRP_AUTH
-        GenerateSecret:
+    # CognitoUserPool:
+    #   Type: AWS::Cognito::UserPool
+    #   Properties:
+    #     UserPoolName: app93ff0569_userpool_93ff0569-dev
+    #     UsernameAttributes:
+    #       - email
+    #     AutoVerifiedAttributes:
+    #       - email
+    # CognitoUserPoolClient:
+    #   Type: AWS::Cognito::UserPoolClient
+    #   Properties:
+    #     ClientName: app93ff0569_app_clientWeb
+    #     UserPoolId: 
+    #       Ref: CognitoUserPool
+    #     ExplicitAuthFlows:
+    #       - ADMIN_NO_SRP_AUTH
+    #     GenerateSecret:

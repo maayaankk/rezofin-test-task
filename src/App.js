@@ -7,14 +7,14 @@ import AppBar from './components/AppBar';
 // import '@aws-amplify/ui-react/styles.css';
 
 // import '@aws-amplify/ui-react/styles.css';
-import { Authenticator, withAuthenticator } from '@aws-amplify/ui-react';
+// import { Authenticator, withAuthenticator } from '@aws-amplify/ui-react';
 
 function App() {
   return (
     <div className="App">
-              {/* <SignUp /> */}
-              <AppBar />
-              <Widget />
+        <SignUp />
+        <AppBar />
+        <Widget />
     </div>
   );
 }

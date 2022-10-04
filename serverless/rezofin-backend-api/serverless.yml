@@ -72,7 +72,7 @@ functions:
           path: /delete-user-data-byId
           method: DELETE
 
-resource:
+resources:
   Resources:
     UserTable:
       Type: AWS::DynamoDB::Table

@@ -65,5 +65,9 @@ jobs:
       - name: Deploy
         run: echo "I am deploying!"
       - run: npm ci
+<<<<<<< HEAD
 
   
+=======
+  
+>>>>>>> 79d9876ffc8bad166179eb77ada359d9a45504a2

@@ -13,7 +13,7 @@ const getUser = async (event) => {
   const response = { statusCode: 200 };
   try {
     const params = {
-      TableName: process.env.DYNAMODB_USER_TABLE
+      TableName: process.env.DYNAMO_USER_TABLE
     };
     const { Items } = await db.send(new ScanCommand(params));
     console.log({ Items });
@@ -46,7 +46,7 @@ const createUser = async (event) => {
   try {
     const body = JSON.parse(event.body);
     const params = {
-      TableName: process.env.DYNAMODB_USER_TABLE,
+      TableName: process.env.DYNAMO_USER_TABLE,
       Item: marshall(body || {}),
     };
     const createResult = await db.send(new PutItemCommand(params));
@@ -71,7 +71,7 @@ const getUserById = async (event) => {
   const response = { statusCode: 200 };
   try {
     const params = {
-      TableName: process.env.DYNAMODB_USER_TABLE,
+      TableName: process.env.DYNAMO_USER_TABLE,
       Key: marshall({ ID: event.pathParameters.ID })
     };
     const { Item } = await db.send(new GetItemCommand(params));
@@ -105,7 +105,7 @@ const updateUserById = async (event) => {
     const body = JSON.parse(event.body);
     const objKeys = Object.keys(body);
     const params = {
-      TableName: process.env.DYNAMODB_USER_TABLE,
+      TableName: process.env.DYNAMO_USER_TABLE,
       Key: marshall({ ID: event.pathParameters.ID }),
       UpdateExpression: `SET ${objKeys.map((_, index) => `#key${index} = :value${index}`).join(", ")}`,
       ExpressionAttributeNames: objKeys.reduce((acc, key, index) => ({
@@ -141,7 +141,7 @@ const deleteUserById = async (event) => {
 
   try {
     const params = {
-      TableName: process.env.DYNAMODB_USER_TABLE,
+      TableName: process.env.DYNAMO_USER_TABLE,
       Key: marshall({ ID: event.pathParameters.ID}),
     };
     const deleteResult = await db.send(new DeleteItemCommand(params));

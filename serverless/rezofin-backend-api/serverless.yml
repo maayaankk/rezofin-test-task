@@ -20,9 +20,7 @@ provider:
           - dynamodb:UpdateItem
           - dynamodb:DeleteItem
           - dynamodb:BatchWriteItem
-      Resource: 
-        - arn:aws:dynamodb:ap-south-1:*:*
-        - arn:aws:lambda:ap-south-1:*:*
+      Resource: '*'
 
 plugins:
   - serverless-iam-roles-per-function
@@ -37,39 +35,39 @@ custom:
 
 functions:
   getUser:
-    handler: lambdas/user.getUser
+    handler: lambdas/userData.getUser
     name: user-data
     events:
       - http:
           path: /get-user
           method: GET
   createUser:
-    handler: lambdas/user.createUser
+    handler: lambdas/userData.createUser
     name: create-user-data
     events:
       - http:
           path: /create-user-data
           method: POST
   getUserById:
-    handler: lambdas/user.getUserById
+    handler: lambdas/userData.getUserById
     name: get-user-data-byId
     events:
       - http:
-          path: /get-user-data-byId
+          path: /get-user-data-byId/{ID}
           method: GET
   updateUserById:
-    handler: lambdas/user.updateUserById
+    handler: lambdas/userData.updateUserById
     name: update-user-byId
     events:
       - http:
-          path: /update-user-data-byId
+          path: /update-user-data-byId/{ID}
           method: PUT
   deleteUserById:
-    handler: lambdas/user.deleteUserById
-    name: delete-user-byId
+    handler: lambdas/userData.deleteUserById
+    name: delete-user-data-byId
     events:
       - http: 
-          path: /delete-user-data-byId
+          path: /delete-user-data-byId/{ID}
           method: DELETE
 
 resources:

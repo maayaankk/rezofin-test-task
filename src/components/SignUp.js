@@ -36,6 +36,7 @@ function SignUp() {
              </main>
             )}
         </Authenticator> */}
+      <Button href='https://rezofin-dev.auth.ap-south-1.amazoncognito.com/login?client_id=13nsmk8s44j5lu56taeqmi6sbm&response_type=token&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=http://localhost:3000/' >Login or Register</Button>
         
     </div>
   )

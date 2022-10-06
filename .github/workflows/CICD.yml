@@ -2,52 +2,66 @@ name: CI + CD
 
 on:
   push:
-    branches:  [ master ]
+    branches:
+      - master
   pull_request:
-    branches:  [ master ]
-  workflow_dispatch:
+    branches:
+      - master
 
 jobs:
-  Build:
-    runs-on: ubantu-latest
+  build:
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
-
+      - uses: actions/checkout@v3
       - name: Compile
-        run: echo Compileing the code!
-  
-  DeployDev:
+        run: echo "Building code!"
+
+  deployDev:
     name: Deploy to Development
-    if: github.event_name == "pull_request"
-    needs: [Build]
-    runs-on: ubantu-latest
-    environment: 
-      name: Development
+    runs-on: ubuntu-22.04
+    if: github.event_name == 'pull_request'
+    needs: [build]
+    environment:
+      name: DEV
       url: "http://dev.myapp.com"
     steps:
-      - name: Deploy
-        run: echo I am deploying!
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Deploy DEV
+        run: echo "Deploying DEV"
+      - run: npm ci
 
-  DeployUat:
+  deployUat:
     name: Deploy to UAT
-    if: github.event.ref == "refs/heads/master"
-    needs: [Build]
-    runs-on: ubantu-latest
+    if: github.event.ref == 'refs/heads/master'
+    needs: [build]
+    runs-on: ubuntu-22.04
     environment: 
       name: UAT
       url: "http://test.myapp.com"
     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Deploy
-        run: echo I am deploying!
+        run: echo "I am deploying!"
+      - run: npm ci
 
-  DeployProd:
+  deployProd:
     name: Deploy to Production
-    needs: [DeployUat]
-    runs-on: ubantu-latest
+    needs: [deployUat]
+    runs-on: ubuntu-22.04
     environment: 
-      name: Production
+      name: PROD
       url: "http://myapp.com"
     steps: 
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Deploy
-        run: echo I am deploying!
-  
+        run: echo "I am deploying!"
+      - run: npm ci

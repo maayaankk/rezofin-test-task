@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 // import IconButton from '@mui/material/IconButton';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
+// import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
 
 // import MenuIcon from '@mui/icons-material/Menu';
 // import { MenuIcon } from "@material-ui/icons/Menu"
@@ -48,7 +48,7 @@ function ButtonAppBar() {
              </main>
             )}
         </Authenticator> */}
-        <AmplifySignOut />
+        {/* <AmplifySignOut /> */}
         </Toolbar>
         </AppBar>
         </Box>

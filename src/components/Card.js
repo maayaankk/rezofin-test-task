@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
+import { Paper } from '@mui/material';
 
 function Cards(props) {
 
@@ -33,16 +34,33 @@ const card = (
   </React.Fragment>
 );
 
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
+
   return (
-    <>
-    <Grid container spacing={2}>
-        <Grid item xs={6} md={6}>
-            <Box sx={{ minWidth: 270, m: 5, mt: 3}}>
-                <Card variant="outlined">{card}</Card>
-            </Box>
-        </Grid>
+    // <>
+    // <Box sx={{width: '100%'}}>
+    // <Grid container rowSpacing={2} columnSpacing={{xs:1, sm:2, md:3}}>
+    //     <Grid item xs={6}>
+    //         <Box sx={{ minWidth: 270, m: 5, mt: 3}}>
+    //             <Item>{card}</Item>
+    //         </Box>
+    //     </Grid>
+    // </Grid>
+    // </Box>
+    // </>
+  <Grid container spacing={{ xs: 4, md: 4 }} columns={{ xs: 4, sm: 4, md: 8, mt: 4 }}>
+  {/* {Array.from(Array(2)).map((_, index) => ( */}
+    <Grid item xs={2} sm={4} md={4} mt={5}>
+      <Item>{card}</Item>
     </Grid>
-    </>
+  {/* ))} */}
+</Grid>
   )
 }
 

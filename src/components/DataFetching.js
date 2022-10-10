@@ -3,6 +3,7 @@ import { Button, Input, Typography } from '@mui/material';
 import axios from '../axios';
 import Card from '../components/Card'
 import TextField from '@mui/material/TextField';
+// import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 function DataFetching() {
     const [posts, setPosts] = useState([]);
@@ -14,12 +15,31 @@ function DataFetching() {
     useEffect(() => {
         const getAllUserByID = async () => {
             const url = `get-user-data-byId/${id}`
-            const response = await axios.get(url);
-            setPost(response.data.data);
+            await axios.get(url)
+                .then(res => {
+                    console.log(res);
+                    setPost(res.data.data);
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            
         }
         // getAllUserData();
         getAllUserByID();
     }, [id])
+
+        const deleteAllUserByID = async () => {
+            const url = `/delete-user-data-byId/${id}`
+            await axios.delete(url)
+                .then(res => {
+                    console.log(res);
+                    setPost(res.data.data);
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
 
     useEffect(() => {
         const getAllUserData = async () => {
@@ -38,19 +58,21 @@ function DataFetching() {
 
   return (
     <>
-    {/* <div style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}> */}
-    <TextField id="outlined-basic" variant="outlined" type="text" value={id} onChange={e => setID(e.target.value)}/>
+    {/* <div style={{display: "flex",flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}> */}
+    <TextField label={'Search Id...'}  id="outlined-basic" variant="outlined" type="text" value={id} onChange={e => setID(e.target.value)}/>
     <Typography>{post.email}</Typography>
     {/* </div> */}
-    {/* <div style={{display: "flex" ,justifyContent: "space-between", alignItems: "center"}}> */}
-        {/* {console.log(posts)} */}
+    // <div style={{display: "flex" ,flexDirection: "column", justifyContent: "space-evenly", alignItems: "center", marginBottom: 20}}>
+        {console.log(posts)}
                 {
                     posts.map(res => (
                         <>
                             <Card 
+                            key={res.ID}
                             id={res.ID}
                             email={res.email}
                             />
+                           
                         </>
                             // {/* <div>
                             //     <h4>ID:{res.ID}</h4>
@@ -64,7 +86,7 @@ function DataFetching() {
                         
                     ))
                 }
-        {/* <div>/ */}
+        // </div>
         {/* <Input outlined /> */}
             {/* {console.log(post)} */}
         

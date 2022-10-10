@@ -28,16 +28,16 @@ const card = (
         <br />
       </Typography>
     </CardContent>
-    <CardActions>
+    {/* <CardActions>
       <Button size="small">Fetch Data</Button>
-    </CardActions>
+    </CardActions> */}
   </React.Fragment>
 );
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
-  padding: theme.spacing(1),
+  padding: theme.spacing(2),
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
@@ -54,10 +54,13 @@ const Item = styled(Paper)(({ theme }) => ({
     // </Grid>
     // </Box>
     // </>
-  <Grid container spacing={{ xs: 4, md: 4 }} columns={{ xs: 4, sm: 4, md: 8, mt: 4 }}>
+  <Grid container spacing={{ xs: 4, md: 4 }} columns={{ xs: 1, sm: 1, md: 1, mt: 1 }}>
   {/* {Array.from(Array(2)).map((_, index) => ( */}
-    <Grid item xs={2} sm={4} md={4} mt={5}>
-      <Item>{card}</Item>
+    <Grid item xs={4} sm={4} md={4} mt={5}>
+      <Item>
+        {card}
+        <Button>Delete</Button>
+      </Item>
     </Grid>
   {/* ))} */}
 </Grid>

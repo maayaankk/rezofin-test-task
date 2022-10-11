@@ -58,11 +58,11 @@ function DataFetching() {
 
   return (
     <>
-    {/* <div style={{display: "flex",flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}> */}
+    <div style={{display: "flex",flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}>
     <TextField label={'Search Id...'}  id="outlined-basic" variant="outlined" type="text" value={id} onChange={e => setID(e.target.value)}/>
     <Typography>{post.email}</Typography>
-    {/* </div> */}
-    // <div style={{display: "flex" ,flexDirection: "column", justifyContent: "space-evenly", alignItems: "center", marginBottom: 20}}>
+    </div>
+    <div style={{display: "flex" ,flexDirection: "column", justifyContent: "space-evenly", alignItems: "center", marginBottom: 20}}>
         {console.log(posts)}
                 {
                     posts.map(res => (
@@ -86,7 +86,7 @@ function DataFetching() {
                         
                     ))
                 }
-        // </div>
+         </div>
         {/* <Input outlined /> */}
             {/* {console.log(post)} */}
         

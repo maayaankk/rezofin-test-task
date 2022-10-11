@@ -11,6 +11,7 @@ import DataFetching from './components/DataFetching';
 // import { Authenticator, withAuthenticator } from '@aws-amplify/ui-react';
 
 function App() {
+
   return (
     <div className="App">
         {/* <SignUp /> */}

@@ -4,6 +4,7 @@ import './App.css';
 import SignUp from './components/SignUp';
 import Widget from './components/Widget';
 import AppBar from './components/AppBar';
+import DataFetching from './components/DataFetching';
 // import '@aws-amplify/ui-react/styles.css';
 
 // import '@aws-amplify/ui-react/styles.css';
@@ -16,6 +17,7 @@ function App() {
         {/* <SignUp /> */}
         <AppBar />
         <Widget />
+        <DataFetching />
     </div>
   );
 }

@@ -64,6 +64,11 @@ const createUser = async (event) => {
     });
   }
 
+  response.headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Credentials": true, 
+  };
+
   return response;
 };
 

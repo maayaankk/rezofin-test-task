@@ -70,6 +70,7 @@ const createUser = async (event) => {
   response.headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": true, 
+
     // "Access-Control-Allow-Headers" : "Content-Type",
     // "Access-Control-Allow-Origin": "http://localhost:3000/",
     // "Access-Control-Allow-Methods": "OPTIONS,POST,GET"

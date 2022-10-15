@@ -6,10 +6,13 @@ import Widget from './components/Widget';
 import AppBar from './components/AppBar';
 import DataFetching from './components/DataFetching';
 import Form from './components/Form';
+
+
 import Login from './components/Login';
 import {Account, AccountContext} from './components/Account';
 import Status from './components/Status';
 import {FlagsProvider, Flags} from "react-feature-flags";
+
 
 // import '@aws-amplify/ui-react/styles.css';
 
@@ -36,6 +39,20 @@ function App() {
 
   return (
     <>
+
+    <div className='Header'>
+    <AppBar />
+    </div>
+   <div className="App">
+   <div className='App-header'>
+   <Widget />
+    <DataFetching />
+    <Form />
+   </div>
+    {/* <SignUp /> */}
+   </div>
+    </>
+
   {/* <FlagsProvider value={flags}>
     <div >
       <Flags 
@@ -79,9 +96,8 @@ function App() {
     </>
 
 // </div>
+
   );
 }
 
 export default App;
-
-

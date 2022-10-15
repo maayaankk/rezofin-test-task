@@ -23,9 +23,10 @@ provider:
       Resource: '*'
 
 plugins:
+  - serverless-auto-swagger
   - serverless-iam-roles-per-function
-  - serverless-offline
   - serverless-webpack
+  - serverless-offline
 
 package: 
   individually: true
@@ -41,7 +42,19 @@ functions:
       - http:
           path: /get-user
           method: GET
+
+          # cors: 
+          #   origin: '*'
+          #   headers:
+          #     - Authorization
+          # type: COGNITO_USER_POOLS
+          # authorizer:
+          #   arn: arn:aws:cognito-idp:ap-south-1:061835027846:userpool/ap-south-1_Iiki8o7N6
+          #   authorizerId:
+          #     Ref: api-authorizer
+
           cors: true
+
   createUser:
     handler: lambdas/userData.createUser
     name: create-user-data
@@ -100,9 +113,8 @@ resources:
     # CognitoUserPoolClient:
     #   Type: AWS::Cognito::UserPoolClient
     #   Properties:
-    #     ClientName: app93ff0569_app_clientWeb
+    #     ClientName: rezofin-app-client
     #     UserPoolId: 
     #       Ref: CognitoUserPool
     #     ExplicitAuthFlows:
     #       - ADMIN_NO_SRP_AUTH
-    #     GenerateSecret:

@@ -42,6 +42,7 @@ functions:
       - http:
           path: /get-user
           method: GET
+
           # cors: 
           #   origin: '*'
           #   headers:
@@ -51,6 +52,9 @@ functions:
           #   arn: arn:aws:cognito-idp:ap-south-1:061835027846:userpool/ap-south-1_Iiki8o7N6
           #   authorizerId:
           #     Ref: api-authorizer
+
+          cors: true
+
   createUser:
     handler: lambdas/userData.createUser
     name: create-user-data
@@ -58,6 +62,7 @@ functions:
       - http:
           path: /create-user-data
           method: POST
+          cors: true
   getUserById:
     handler: lambdas/userData.getUserById
     name: get-user-data-byId
@@ -65,6 +70,7 @@ functions:
       - http:
           path: /get-user-data-byId/{ID}
           method: GET
+          cors: true
   updateUserById:
     handler: lambdas/userData.updateUserById
     name: update-user-byId
@@ -72,6 +78,7 @@ functions:
       - http:
           path: /update-user-data-byId/{ID}
           method: PUT
+          cors: true
   deleteUserById:
     handler: lambdas/userData.deleteUserById
     name: delete-user-data-byId
@@ -79,6 +86,7 @@ functions:
       - http: 
           path: /delete-user-data-byId/{ID}
           method: DELETE
+          cors: true
 
 resources:
   Resources:

@@ -15,7 +15,7 @@ const getUser = async (event) => {
     const params = {
       TableName: process.env.DYNAMO_USER_TABLE
     };
-    const { Items } = await db.send(new ScanCommand(params));
+    const { Items } = await db.send(new ScanCommand(params)); //Filter the user data based on the email
     console.log({ Items });
     response.body = JSON.stringify({
       message: "Successfully retrived user data",
@@ -35,6 +35,9 @@ const getUser = async (event) => {
   response.headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": true,
+    // "Access-Control-Allow-Headers" : "Content-Type",
+    // "Access-Control-Allow-Origin": "http://localhost:3000/",
+    // "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
   };
 
   return response;
@@ -67,6 +70,10 @@ const createUser = async (event) => {
   response.headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": true, 
+
+    // "Access-Control-Allow-Headers" : "Content-Type",
+    // "Access-Control-Allow-Origin": "http://localhost:3000/",
+    // "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
   };
 
   return response;
@@ -98,6 +105,9 @@ const getUserById = async (event) => {
   response.headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": true, 
+    // "Access-Control-Allow-Headers" : "Content-Type",
+    // "Access-Control-Allow-Origin": "http://localhost:3000/",
+    // "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
   };
 
   return response;
@@ -168,6 +178,9 @@ const deleteUserById = async (event) => {
   response.headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": true,
+    // "Access-Control-Allow-Headers" : "Content-Type",
+    // "Access-Control-Allow-Origin": "http://localhost:3000/",
+    // "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
   };
 
   return response;

@@ -23,7 +23,16 @@ class Form extends React.Component{
     e.preventDefault()
     console.log(this.state)
     const url = '/create-user-data'
+
     axios.post(url, this.state)
+
+    axios.post(url, this.state
+  //     , {
+  //     headers: {
+  //         'Authorization': props.token
+  //     }
+  // })
+    )
       .then(res => {
         console.log(res)
       })

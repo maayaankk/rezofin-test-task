@@ -4,6 +4,8 @@ import './App.css';
 import SignUp from './components/SignUp';
 import Widget from './components/Widget';
 import AppBar from './components/AppBar';
+import DataFetching from './components/DataFetching';
+import Form from './components/Form';
 // import '@aws-amplify/ui-react/styles.css';
 
 // import '@aws-amplify/ui-react/styles.css';
@@ -12,14 +14,20 @@ import AppBar from './components/AppBar';
 function App() {
 
   return (
-    <div className="App">
-        {/* <SignUp /> */}
-        <AppBar />
-        <Widget />
+    <>
+    <div className='Header'>
+    <AppBar />
     </div>
+   <div className="App">
+   <div className='App-header'>
+   <Widget />
+    <DataFetching />
+    <Form />
+   </div>
+    {/* <SignUp /> */}
+   </div>
+    </>
   );
 }
 
 export default App;
-
-

@@ -1,7 +1,7 @@
 import React from 'react'
 import { CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js';
 import Pool from '../components/UserPool';
-import { Button } from '@mui/material';
+import { Button, Link } from '@mui/material';
 
 function LogOut() {
 
@@ -12,9 +12,13 @@ function LogOut() {
         }
     }
 
+    // https://rezofin-dev.auth.ap-south-1.amazoncognito.com/logout?client_id=4vs4hk0vdln7jum20sfab1gcea&logout_uri=https://rezofin-dev.auth.ap-south-1.amazoncognito.com/login?client_id=4vs4hk0vdln7jum20sfab1gcea&response_type=token&scope=email+openid+profile&redirect_uri=http://localhost:3000/
+
   return (
     <div>
-        <Button onClick={logout}>Log out</Button>
+        <a href=' https://rezofin-dev.auth.ap-south-1.amazoncognito.com/logout?client_id=4vs4hk0vdln7jum20sfab1gcea&logout_uri=https://rezofin-dev.auth.ap-south-1.amazoncognito.com/login?client_id=4vs4hk0vdln7jum20sfab1gcea&response_type=token&scope=email+openid+profile&redirect_uri=http://localhost:3000/'>Log out</a>
+        {/* <Button onClick={Link=' https://rezofin-dev.auth.ap-south-1.amazoncognito.com/logout?client_id=4vs4hk0vdln7jum20sfab1gcea&logout_uri=https://rezofin-dev.auth.ap-south-1.amazoncognito.com/login?client_id=4vs4hk0vdln7jum20sfab1gcea&response_type=token&scope=email+openid+profile&redirect_uri=http://localhost:3000/'}>Log out</Button> */}
+
     </div>
   )
 }

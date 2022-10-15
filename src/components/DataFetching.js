@@ -3,24 +3,53 @@ import { Button, Input, Typography } from '@mui/material';
 import axios from '../axios';
 import Card from '../components/Card'
 import TextField from '@mui/material/TextField';
+import {CognitoJwtVerifier} from 'aws-jwt-verify';
+
 // import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 function DataFetching(props) {
     const [posts, setPosts] = useState([]);
     const [post, setPost] = useState({});
+    const [email, setToken] = useState('');
 
     // const [userId, setUserId] = useState({});
     const [id, setID] = useState()
+
+        var id_token_str = window.location.hash.split("&access_token=")[0]
+        var authorization_str = id_token_str.replace("#id_token=", "");
+    
+        console.log(authorization_str);
+
+    const verifier = CognitoJwtVerifier.create({
+        userPoolId: "ap-south-1_24fntNvCV",
+        tokenUse: "id",
+        clientId: "4vs4hk0vdln7jum20sfab1gcea"
+    });
+
+    try {
+        const payload =   verifier.verify(authorization_str)
+            .then(res => {
+                console.log("Token.valid. Payload: ", payload);
+                console.log(res)
+                console.log(res.email)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    } catch (error) {
+        // console.log(error);
+        console.log("Token not valid. Error: ", error)
+    }
 
     useEffect(() => {
         const getAllUserByID = async () => {
             const url = `get-user-data-byId/${id}`
             await axios.get(url
-            //     , {
-            //     headers: {
-            //         'Authorization': props.token
-            //     }
-            // }
+                , {
+                headers: {
+                    'Authorization': authorization_str
+                }
+            }
             )
                 .then(res => {
                     console.log(res);
@@ -40,7 +69,7 @@ function DataFetching(props) {
             await axios.delete(url 
                 , {
                 headers: {
-                    'Authorization': props.token
+                    'Authorization': authorization_str
                 }
             })
                 .then(res => {
@@ -58,7 +87,7 @@ function DataFetching(props) {
             await axios.get(url
                 , {
                     headers: {
-                        'Authorization': props.token,
+                        'Authorization': authorization_str,
                     }
                 }
                 )

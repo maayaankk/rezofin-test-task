@@ -55,27 +55,27 @@ function App() {
 
     {/* {
        status ? ( */}
-        {/* <div className="App"> */}
-        {/* <div className='Header'> */}
-        {/* <AppBar /> */}
-        {/* </div> */}
-        {/* <div className='App-header'> */}
-         {/* <Widget />
+        <div className="App">
+        <div className='Header'>
+        <AppBar />
+        </div>
+        <div className='App-header'>
+         {/* {/* <Widget /> */}
          <DataFetching />
-         <Form /> */}
-        {/* </div> */}
-        {/* </div> */}
+         <Form /> 
+        </div>
+        </div>
        {/* ) : ( */}
       
        {/* )
     } */}
-        <div>
+        {/* <div>
       <Account>
         <Status />
         {/* <SignUp /> */}
         {/* <Login /> */}
-      </Account>
-    </div>
+      {/* </Account> */}
+    {/* </div> */} 
     </>
 
 // </div>

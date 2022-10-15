@@ -42,9 +42,9 @@ function ButtonAppBar(props) {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Rezofin
           </Typography>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          {/* <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {props.user}
-          </Typography>
+          </Typography> */}
 
           {/* <Authenticator>
             {({ signOut, user }) => (

@@ -132,9 +132,6 @@ function DataFetching(props) {
                             id={res.ID}
                             email={res.email}
                             />
-
-                           
-
                            {/* <button onClick={deleteAllUserByID}>delete</button> */}
                         </>
                             // {/* <div>

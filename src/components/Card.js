@@ -34,13 +34,13 @@ const card = (
   </React.Fragment>
 );
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(2),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+// const Item = styled(Paper)(({ theme }) => ({
+//   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+//   ...theme.typography.body2,
+//   padding: theme.spacing(2),
+//   textAlign: 'center',
+//   color: theme.palette.text.secondary,
+// }));
 
   return (
     // <>
@@ -54,15 +54,24 @@ const Item = styled(Paper)(({ theme }) => ({
     // </Grid>
     // </Box>
     // </>
-  <Grid container spacing={{ xs: 4, md: 4 }} columns={{ xs: 1, sm: 1, md: 1, mt: 1 }}>
+  <Grid container my={2} p={2}>
   {/* {Array.from(Array(2)).map((_, index) => ( */}
-    <Grid item xs={4} sm={4} md={4} mt={5}>
-      <Item>
-        {card}
-        <Button>Delete</Button>
-      </Item>
+    <Grid item xs={6}>
+      <Paper>
+      <Box >
+      {card}
+      <Button>Delete</Button>
+      </Box>
+      </Paper>
     </Grid>
-  {/* ))} */}
+    <Grid item xs={6}>
+      <Paper>
+      <Box >
+      {card}
+      <Button>Delete</Button>
+      </Box>
+      </Paper>
+    </Grid>
 </Grid>
   )
 }

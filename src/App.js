@@ -12,6 +12,7 @@ import Login from './components/Login';
 import {Account, AccountContext} from './components/Account';
 import Status from './components/Status';
 import {FlagsProvider, Flags} from "react-feature-flags";
+// import Footer from './components/Footer';
 
 
 // import '@aws-amplify/ui-react/styles.css';
@@ -44,16 +45,17 @@ function App() {
     <AppBar />
     </div>
    <div className="App">
-   <div className='App-header'>
+      <div className='App-header'>
    <Widget />
     <DataFetching />
     <Form />
+    {/* <Footer /> */}
    </div>
     {/* <SignUp /> */}
    </div>
     </>
 
-  {/* <FlagsProvider value={flags}>
+  /* <FlagsProvider value={flags}>
     <div >
       <Flags 
         authorizedFlags={["adminOnly"]}
@@ -62,38 +64,38 @@ function App() {
           <Account>
           <h1>For VIP</h1>
           <Status />
-        {/* <SignUp /> */}
-        {/* <Login /> */}
-        {/* </Account>
+        {/* <SignUp /> */
+        /* <Login /> */
+        /* </Account>
           </>
         }
-      /> */}
-    {/* </div> */} 
+      /> */
+    /* </div> */
 
-    {/* {
-       status ? ( */}
-        <div className="App">
-        <div className='Header'>
-        <AppBar />
-        </div>
-        <div className='App-header'>
-         {/* {/* <Widget /> */}
-         <DataFetching />
-         <Form /> 
-        </div>
-        </div>
-       {/* ) : ( */}
+    /* {
+      //  status ? ( */
+        // <div className="App">
+        // <div className='Header'>
+        // <AppBar />
+        // </div>
+        // <div className='App-header'>
+        //  {/* {/* <Widget /> */}
+        //  <DataFetching />
+        //  <Form /> 
+        // </div>
+        // </div>
+       /* ) : ( */
       
-       {/* )
-    } */}
-        {/* <div>
+       /* )
+    } */
+        /* <div>
       <Account>
         <Status />
-        {/* <SignUp /> */}
-        {/* <Login /> */}
-      {/* </Account> */}
-    {/* </div> */} 
-    </>
+        {/* <SignUp /> */
+        /* <Login /> */
+      /* </Account> */
+    /* </div> */
+    // </>
 
 // </div>
 

@@ -12,6 +12,7 @@ import Login from './components/Login';
 import {Account, AccountContext} from './components/Account';
 import Status from './components/Status';
 import {FlagsProvider, Flags} from "react-feature-flags";
+import Spinner from './components/Spiner';
 // import Footer from './components/Footer';
 
 
@@ -25,9 +26,10 @@ const flags = [
   {name: "vipOnly", isActive: false},
   {name: "beta-user", isActive: false},
 ]
-
 function App() {
-  // const [status, setStatus] = useState(true);
+  const [loading, setLoading] = useState(true);
+  // setLoading(false)
+
   // const {getSession} = useContext(AccountContext);
 
   // useEffect(() => {
@@ -37,17 +39,19 @@ function App() {
   //       setStatus(true)
   //     })
   // })
-
+  if (loading) return <Spinner />
   return (
     <>
 
     <div className='Header'>
     <AppBar />
     </div>
-   <div className="App">
-      <div className='App-header'>
-   <Widget />
-    <DataFetching />
+    <div className="App">
+    <div className='App-header'>
+    <Widget />
+    {
+    loading ? <Spinner/> : <DataFetching />
+    }
     <Form />
     {/* <Footer /> */}
    </div>

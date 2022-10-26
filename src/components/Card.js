@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -8,8 +9,37 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import { Paper } from '@mui/material';
+import axios from '../axios';
+import { Stack } from '@mui/system';
 
 function Cards(props) {
+  const [id, setID] = useState()
+  const [post, setPost] = useState([]);
+
+  var id_token_str = window.location.hash.split("&access_token=")[0]
+  var authorization_str = id_token_str.replace("#id_token=", "");
+
+  const deleteAllUserByID = async () => {
+    const url = `/delete-user-data-byId/${id}`
+
+    await axios.delete(url)
+
+    await axios.delete(url 
+        , {
+        headers: {
+            'Authorization': authorization_str
+        }
+    })
+
+        .then(res => {
+            console.log(res);
+            setPost(res.data.data);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
 
 const card = (
   <React.Fragment>
@@ -54,25 +84,32 @@ const card = (
     // </Grid>
     // </Box>
     // </>
-  <Grid container my={2} p={2}>
+<Stack p={4}>
+<Grid container my={2} p={2}>
   {/* {Array.from(Array(2)).map((_, index) => ( */}
-    <Grid item xs={6}>
-      <Paper>
+  <Stack p={2}>
+    <Grid item xs={12}>
+      <Paper elevation={3} >
       <Box >
       {card}
       <Button>Delete</Button>
       </Box>
       </Paper>
     </Grid>
-    <Grid item xs={6}>
-      <Paper>
+  </Stack>
+  <Stack p={2}>
+  <Grid item xs={12}>
+      <Paper elevation={3}>
       <Box >
       {card}
-      <Button>Delete</Button>
+      <Button onClick={deleteAllUserByID}>Delete</Button>
       </Box>
       </Paper>
     </Grid>
-</Grid>
+  </Stack>
+</Grid>  
+</Stack>
+
   )
 }
 

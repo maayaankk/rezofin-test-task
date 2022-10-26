@@ -1,8 +1,9 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Button } from '@mui/material';
+import { Button, FormGroup } from '@mui/material';
 import axios from '../axios';
+import { Stack } from '@mui/system';
 
 class Form extends React.Component{
   constructor(props) {
@@ -54,18 +55,21 @@ class Form extends React.Component{
         '& .MuiTextField-root': { width: '25ch' },
       }}
     >
-    <form style={{display: 'flex', flexDirection: "column"}} onSubmit={this.submitData  } >
+    <form style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center' ,padding: 10}} onSubmit={this.submitData  } >
       {/* <TextField type='text' label={'id'} id="margin-none"  value={ID} />
       <TextField type='text' label={'name'} id="margin-dense" margin="dense"  value={name}/>
       <TextField type='text' label={'password'} id="margin-normal" margin="normal"  value={password} />
       <Button type='submit' variant="contained">Submit</Button> */}
-       <TextField 
+      <Stack marginBottom={2}>
+      <TextField 
         label='id'
         type='text' 
         name='ID'   
         value={ID} 
         onChange={this.handleChange} 
       />
+      </Stack>
+      <Stack marginBottom={2}>
       <TextField 
         label='email'
         type='text'   
@@ -73,14 +77,18 @@ class Form extends React.Component{
         value={email} 
         onChange={this.handleChange}
       />
-      <TextField 
-        label='password'
+        </Stack>
+        <Stack marginBottom={2}>
+        <TextField 
+        label='Password'
         type='password'    
         name='password' 
+         helperText='Do not share your password with anyone'
         value={password} 
         onChange={this.handleChange} 
       />
-      <Button type='submit' variant="contained">Submit</Button>
+        </Stack>
+      <Button type='submit' variant="contained" size='small'>Submit</Button>
     </form>
     </Box>
     </div>

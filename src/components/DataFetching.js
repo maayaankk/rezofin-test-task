@@ -3,6 +3,7 @@ import { Button, Input, Typography } from '@mui/material';
 import axios from '../axios';
 import Card from '../components/Card'
 import TextField from '@mui/material/TextField';
+import Spinner from './Spiner';
 
 // import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
@@ -72,27 +73,6 @@ function DataFetching(props) {
         getAllUserByID();
     }, [id])
 
-        const deleteAllUserByID = async () => {
-            const url = `/delete-user-data-byId/${id}`
-
-            await axios.delete(url)
-
-            await axios.delete(url 
-                , {
-                headers: {
-                    'Authorization': authorization_str
-                }
-            })
-
-                .then(res => {
-                    console.log(res);
-                    setPost(res.data.data);
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-        }
-
     useEffect(() => {
         const getAllUserData = async () => {
             const url = '/get-user';
@@ -115,7 +95,6 @@ function DataFetching(props) {
         }
         getAllUserData();
     }, [])
-
   return (
     <>
     <div style={{display: "flex",flexDirection: "column", alignItems: "center", justifyContent: "space-between"}}>

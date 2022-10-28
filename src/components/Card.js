@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -8,8 +9,37 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import { Paper } from '@mui/material';
+import axios from '../axios';
+import { Stack } from '@mui/system';
 
 function Cards(props) {
+  const [id, setID] = useState()
+  const [post, setPost] = useState([]);
+
+  var id_token_str = window.location.hash.split("&access_token=")[0]
+  var authorization_str = id_token_str.replace("#id_token=", "");
+
+  const deleteAllUserByID = async () => {
+    const url = `/delete-user-data-byId/${id}`
+
+    await axios.delete(url)
+
+    await axios.delete(url 
+        , {
+        headers: {
+            'Authorization': authorization_str
+        }
+    })
+
+        .then(res => {
+            console.log(res);
+            setPost(res.data.data);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
 
 const card = (
   <React.Fragment>
@@ -34,13 +64,13 @@ const card = (
   </React.Fragment>
 );
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(2),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
+// const Item = styled(Paper)(({ theme }) => ({
+//   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+//   ...theme.typography.body2,
+//   padding: theme.spacing(2),
+//   textAlign: 'center',
+//   color: theme.palette.text.secondary,
+// }));
 
   return (
     // <>
@@ -54,16 +84,32 @@ const Item = styled(Paper)(({ theme }) => ({
     // </Grid>
     // </Box>
     // </>
-  <Grid container spacing={{ xs: 4, md: 4 }} columns={{ xs: 1, sm: 1, md: 1, mt: 1 }}>
+<Stack p={4}>
+<Grid container my={2} p={2}>
   {/* {Array.from(Array(2)).map((_, index) => ( */}
-    <Grid item xs={4} sm={4} md={4} mt={5}>
-      <Item>
-        {card}
-        <Button>Delete</Button>
-      </Item>
+  <Stack p={2}>
+    <Grid item xs={12}>
+      <Paper elevation={3} >
+      <Box >
+      {card}
+      <Button>Delete</Button>
+      </Box>
+      </Paper>
     </Grid>
-  {/* ))} */}
-</Grid>
+  </Stack>
+  <Stack p={2}>
+  <Grid item xs={12}>
+      <Paper elevation={3}>
+      <Box >
+      {card}
+      <Button onClick={deleteAllUserByID}>Delete</Button>
+      </Box>
+      </Paper>
+    </Grid>
+  </Stack>
+</Grid>  
+</Stack>
+
   )
 }
 
